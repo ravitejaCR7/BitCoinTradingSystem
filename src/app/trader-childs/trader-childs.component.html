@@ -1,0 +1,18 @@
+<div class="names-parent-style">
+  <br/>
+  from out : {{parentTrader}}<br/>
+  ClientID : {{clientId}}<br/>
+  TransactionType : {{transType}}
+  TransactionValue : {{transVal}}<br/>
+  TransactionCommission : {{transCommission}}
+  TransactionCommissionType : {{transCommissionType}}<br/>
+  TransactionStatus : {{transStatus}}
+  BitCoin Value : {{bitCoinValue}}<br/>
+  <p *ngIf="buttonsFlag">
+  <button (click) = "acceptTrans()">Accept</button>
+  <button (click) = "rejectTrans()">Reject</button>
+  </p>
+  <p *ngIf="errorFlag">{{errorMessageFromResponse}}</p>
+
+  <br/>
+</div>

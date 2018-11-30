@@ -1,0 +1,8 @@
+
+<div class = "names-parent-style">
+  <p>selected child: {{childPassedName}}</p>
+  <p >
+    names-parent {{parentName}} : <app-child-names *ngFor = "let names of namesList" [names] = "names" (childEmitter) = "childEmitter($event)"></app-child-names>
+  </p>
+  <button (click)="passFromParent(childPassedName)">parent</button>
+</div>

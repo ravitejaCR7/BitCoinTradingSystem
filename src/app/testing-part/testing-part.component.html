@@ -1,0 +1,20 @@
+<div class = "main-container">
+  <h1 class = "main-container-text">This is main Container {{title}}</h1>
+  <div>selected parent : {{fromParent}}</div>
+  <app-names-parent *ngFor = "let pnames of namesList" [parentName]="pnames" (parentEmitter)="parentEmitter($event)"></app-names-parent>
+
+  <br/>
+  <br/>
+  <br/>
+
+  <button (click) = "getCompleteData()">CompleteData</button>
+  <br/>
+  <br/>
+  <input type="text" placeholder="Product Name" (keyup) = "onTextEnteredInInputForPostName($event)"/>
+  <input type="text" placeholder="Product cost" (keyup) = "onTextEnteredInInputForPostCost($event)"/>
+  <br/>
+  <button (click) = "postThisData()">PostData</button>
+  <br/>
+  <input type="text" placeholder="Product cost" (keyup) = "onTextEnteredInInputForGet($event)"/>
+  <button (click) = "getThisProduct()">GetData</button>
+</div>

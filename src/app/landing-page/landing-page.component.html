@@ -1,0 +1,19 @@
+<div>
+  <h3>Login</h3>
+  UserName : <input type="text" placeholder="UserName" (keyup) = "onTextEnteredInInputForUserName($event)"/><br/>
+  Password : <input type="text" placeholder="Password" (keyup) = "onTextEnteredInInputForPassword($event)"/><br/>
+
+  <p>Select the type</p>
+  <input type="radio" value="client" name="ClientType" (change) = radioLoginType($event)> Client
+  <input type="radio" value="trader" name="ClientType" (change) = radioLoginType($event)> Trader
+  <br/><br/>
+
+  <button (click) = "validateLogin()">Login</button>
+
+
+
+  <p *ngIf="errorShow">wrong username or password!</p>
+  <p *ngIf="errorFromResponse">{{errorStringFromResponse}}</p>
+
+
+</div>

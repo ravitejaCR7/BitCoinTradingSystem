@@ -1,0 +1,27 @@
+<div>
+  <p *ngIf="errorFlag" >{{errorMessage}}</p>
+
+  <input type="text" placeholder="UserName" (keyup) = "registrationInputForUserName($event)"/>
+  <br/>
+  <input type="text" placeholder="Password" (keyup) = "registrationInputForPassword($event)"/>
+  <br/>
+  <input type="text" placeholder="FirstName" (keyup) = "registrationInputForFirstName($event)"/>
+  <br/>
+  <input type="text" placeholder="LastName" (keyup) = "registrationInputForLastName($event)"/>
+  <br/>
+  <input type="text" placeholder="PhoneNumber" (keyup) = "registrationInputForPhoneNumber($event)"/>
+  <br/>
+  <input type="text" placeholder="Email" (keyup) = "registrationInputForEmail($event)"/>
+  <br/>
+  <p>Select the type</p>
+  <input type="radio" value="client" name="ClientType" (change) = radioClientType($event)> Client
+  <input type="radio" value="trader" name="ClientType" (change) = radioClientType($event)> Trader
+  <br/>
+  <h3>Address:</h3>
+  <br/>
+  State : <input type="text" placeholder="State" (keyup) = "registrationInputForAddState($event)"/><br/>
+  City : <input type="text" placeholder="State" (keyup) = "registrationInputForAddCity($event)"/><br/>
+  Zipcode : <input type="text" placeholder="State" (keyup) = "registrationInputForAddZipcode($event)"/><br/>
+  Street : <input type="text" placeholder="State" (keyup) = "registrationInputForAddStreet($event)"/><br/>
+  <button (click) = "validateRegistration()">Register!</button>
+</div>

@@ -1,0 +1,30 @@
+<div>
+
+  <h1>User Details</h1><br/>
+  BitCoins : <b>{{bitCoins}}</b><br/>
+  FiatCurrency : <b>{{fiatCurrency}}</b>
+
+
+  <br/><br/>
+  BitCoin value: {{bValue}}$<br/><br/>
+  How many bit coins would you like to buy?<br/><br/>
+
+  <input type="text" placeholder="bitcoins" (keyup) = "onTextEnteredInInputForCalculatingBitCoinValues($event)"/>
+  <br/><br/>
+  SubTotal : {{calSubTotal}}$<br/><br/>
+  How would you pay commission?<br/><br/>
+
+  <p *ngIf="bitRadioFlag"><input type="radio" value="BitCoin" name="CommType" (change) = radioCommType($event)> BitCoin</p>
+  <input  type="radio" value="FiatCash" name="CommType" (change) = radioCommType($event)> FiatCash
+  <br/><br/>
+  Commission in BitCoin : {{calCommissionBit}}$<br/><br/>
+  Commission in Flatcurrency : {{calCommissionFiat}}$<br/><br/>
+
+  Total : {{calTotal}}
+
+  <br/>
+  <button *ngIf="buyFlag" (click) = "sellBitCoins()">Sell!</button>
+
+  <p *ngIf="errorFlag">{{errorMessageFromResponse}}</p>
+
+</div>

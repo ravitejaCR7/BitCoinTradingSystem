@@ -1,0 +1,19 @@
+<div>
+  <p *ngIf="errorFlag" >{{errorMessage}}</p>
+  Enter Username : <input type="text" placeholder="UserName" (keyup) = "findTheUserDetails($event)"/>
+  <br/>
+  <button (click) = "findTheUserDetailsButtons()">Find</button><br/>
+  <div *ngIf="showDetails">
+    <br/><br/>
+    Client's UserName : {{clientId}}<br/>
+    Name : {{clientName}}<br/>
+    City : {{clientCity}}<br/>
+    State : {{clientState}}<br/>
+    Type : {{clientType}}<br/>
+    phoneNumber : {{phoneNumber}}<br/>
+    ZipCode : {{clientZipCode}}<br/>
+    No.Of transactions : {{transCount}}<br/>
+    <br/><br/>
+  </div>
+  <app-trader-childs *ngFor = "let pnames of namesList" [parentTrader]="pnames"></app-trader-childs>
+</div>

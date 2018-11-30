@@ -1,0 +1,23 @@
+<div>
+
+  <h1>User Details</h1><br/>
+  BitCoins : <b>{{bitCoins}}</b><br/>
+  FiatCurrency : <b>{{fiatCurrency}}</b>
+
+
+  <br/>
+  <br/>
+  <br/>
+
+
+  <input type="text" placeholder="load money" (keyup) = "onTextEnteredInInputForLoadingMoney($event)"/>
+  <button (click) = "loadAmount()">Load</button>
+
+  <br/>
+  <br/>
+  <button (click) = "buyBitCoins()">Buy</button>
+  <button (click) = "sellBitCoins()">sell</button>
+
+  <p *ngIf="errorFlag">{{errorMessageFromResponse}}</p>
+
+</div>
