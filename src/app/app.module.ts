@@ -16,6 +16,7 @@ import { SellBitCoinsComponent } from './sell-bit-coins/sell-bit-coins.component
 import { HomepageTraderComponent } from './homepage-trader/homepage-trader.component';
 import { TraderChildsComponent } from './trader-childs/trader-childs.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
+import { TraderChildBuyComponent } from './trader-child-buy/trader-child-buy.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ClientHistoryComponent } from './client-history/client-history.componen
     SellBitCoinsComponent,
     HomepageTraderComponent,
     TraderChildsComponent,
-    ClientHistoryComponent
+    ClientHistoryComponent,
+    TraderChildBuyComponent
   ],
   imports: [
     BrowserModule,

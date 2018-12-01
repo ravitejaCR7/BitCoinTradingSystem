@@ -15,6 +15,7 @@ export class HomepageTraderComponent implements OnInit {
 
   namesList:number[];
   transList:number[];
+  buyTransList:number[];
   clientName:string = "";
 
   errorFlag:boolean = false;
@@ -39,6 +40,7 @@ export class HomepageTraderComponent implements OnInit {
     console.log("ngOnInit()++ "+this.primaryKeyService.getPrimaryKeyTrader());
 
     this.getTheTransIdsList();
+    this.getTheBuyTransIdsList();
   }
 
   getTheTransIdsList()
@@ -139,6 +141,32 @@ export class HomepageTraderComponent implements OnInit {
 
     });
 
+  }
+
+  getTheBuyTransIdsList()
+  {
+    let obs = this.http.get('http://localhost:8080/restproject/webapi/products/getAllNewBuyTransactions/new');
+
+    obs.subscribe((data:any) =>
+    {
+
+      if(data.result == false)
+      {
+        //there is an error
+        this.errorFlag = true;
+        this.errorMessage = data.errorMessage;
+
+      }
+      else if(data.result == true)
+      {
+        //there is no error
+        this.errorFlag = false;
+        this.errorMessage = "";
+
+        this.buyTransList = data.transactionIds;
+      }
+
+    });
   }
 
 }

@@ -1,0 +1,17 @@
+<div class="names-parent-style">
+
+  <br/>
+  Transaction Id : {{buyIdFromParent}}<br/>
+  ClientID : {{clientId}}<br/>
+  Transactoin Amount : {{transVal}}<br/>
+  Payment Status : {{paymentStatus}}<br/>
+
+  <p *ngIf="buttonsFlag">
+  <button (click) = "acceptTrans()">Accept</button>
+  <button (click) = "rejectTrans()">Reject</button>
+  </p>
+  <p *ngIf="errorFlag">{{errorMessageFromResponse}}</p>
+
+  <br/>
+
+</div>
