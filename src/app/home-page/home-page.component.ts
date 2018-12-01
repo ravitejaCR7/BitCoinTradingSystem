@@ -59,6 +59,8 @@ export class HomePageComponent implements OnInit {
   onTextEnteredInInputForLoadingMoney(event:any)
   {
     this.amountLoaded = event.target.value;
+    this.errorMessageFromResponse = "";
+    this.errorFlag = false;
   }
 
   loadAmount()
@@ -67,9 +69,10 @@ export class HomePageComponent implements OnInit {
     {
       console.log("amt : "+this.amountLoaded);
 
-      let obs = this.http.post('http://localhost:8080/restproject/webapi/products/updateFiatAmount/',
+      let obs = this.http.post('http://localhost:8080/restproject/webapi/products/newClientAmountTransaction/',
       {"clientId":this.userPrimaryKey,
-        "amount":this.amountLoaded
+        "amount":this.amountLoaded,
+        "transStatus":"new"
       }
       );
 
@@ -78,27 +81,10 @@ export class HomePageComponent implements OnInit {
         if(data.result == true)
         {
           //inserted
-          let obsNew = this.http.get('http://localhost:8080/restproject/webapi/products/balance/'+this.userPrimaryKey);
+          this.amountLoaded = 0;
+          this.errorMessageFromResponse = "Made new Payment";
+          this.errorFlag = true;
 
-          obsNew.subscribe((data:any) =>
-          {
-
-            console.log("accounts response : "+data.errorMessage);
-
-
-            if(data.result == false)
-            {
-              this.errorMessageFromResponse = data.errorMessage;
-              this.errorFlag = true;
-            }
-            else if(data.result == true)
-            {
-              this.bitCoins = data.clientBitCoins;
-              this.fiatCurrency = data.clientFiatCurrency;
-              this.errorFlag = false;
-            }
-
-          });
         }
         else if(data.result == false)
         {
@@ -106,6 +92,47 @@ export class HomePageComponent implements OnInit {
           this.errorFlag = true;
         }
     });
+
+      //This part should go into the trader (accept/reject payment transaction)
+    //   let obs = this.http.post('http://localhost:8080/restproject/webapi/products/updateFiatAmount/',
+    //   {"clientId":this.userPrimaryKey,
+    //     "amount":this.amountLoaded
+    //   }
+    //   );
+    //
+    //   obs.subscribe((data:any) =>
+    //   {
+    //     if(data.result == true)
+    //     {
+    //       //inserted
+    //       let obsNew = this.http.get('http://localhost:8080/restproject/webapi/products/balance/'+this.userPrimaryKey);
+    //
+    //       obsNew.subscribe((data:any) =>
+    //       {
+    //
+    //         console.log("accounts response : "+data.errorMessage);
+    //
+    //
+    //         if(data.result == false)
+    //         {
+    //           this.errorMessageFromResponse = data.errorMessage;
+    //           this.errorFlag = true;
+    //         }
+    //         else if(data.result == true)
+    //         {
+    //           this.bitCoins = data.clientBitCoins;
+    //           this.fiatCurrency = data.clientFiatCurrency;
+    //           this.errorFlag = false;
+    //         }
+    //
+    //       });
+    //     }
+    //     else if(data.result == false)
+    //     {
+    //       this.errorMessageFromResponse = data.errorMessage;
+    //       this.errorFlag = true;
+    //     }
+    // });
 
     }
     else

@@ -3,6 +3,7 @@
   Enter Username : <input type="text" placeholder="UserName" (keyup) = "findTheUserDetails($event)"/>
   <br/>
   <button (click) = "findTheUserDetailsButtons()">Find</button><br/>
+  <button (click) = "findTheUserTransHistoryButtons()">History</button><br/>
   <div *ngIf="showDetails">
     <br/><br/>
     Client's UserName : {{clientId}}<br/>
@@ -15,5 +16,10 @@
     No.Of transactions : {{transCount}}<br/>
     <br/><br/>
   </div>
+  <div *ngIf="historyFlag">
+    <h2>{{clientName}}'s BitCoins History</h2>
+    <app-client-history *ngFor="let transIds of transList" [transId]="transIds"></app-client-history>
+  </div>
+  <h2>New BitCoin Transactions</h2>
   <app-trader-childs *ngFor = "let pnames of namesList" [parentTrader]="pnames"></app-trader-childs>
 </div>
