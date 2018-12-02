@@ -17,6 +17,7 @@ import { HomepageTraderComponent } from './homepage-trader/homepage-trader.compo
 import { TraderChildsComponent } from './trader-childs/trader-childs.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
 import { TraderChildBuyComponent } from './trader-child-buy/trader-child-buy.component';
+import { ManagerModuleComponent } from './manager-module/manager-module.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TraderChildBuyComponent } from './trader-child-buy/trader-child-buy.com
     HomepageTraderComponent,
     TraderChildsComponent,
     ClientHistoryComponent,
-    TraderChildBuyComponent
+    TraderChildBuyComponent,
+    ManagerModuleComponent
   ],
   imports: [
     BrowserModule,

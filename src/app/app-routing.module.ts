@@ -7,6 +7,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { BuyBitCoinsComponent } from './buy-bit-coins/buy-bit-coins.component';
 import { SellBitCoinsComponent } from './sell-bit-coins/sell-bit-coins.component';
 import { HomepageTraderComponent } from './homepage-trader/homepage-trader.component';
+import { ManagerModuleComponent } from './manager-module/manager-module.component';
 
 const routes: Routes = [
   {path:'login' , component: LandingPageComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path :'testing' , component : TestingPartComponent},
   {path :'buyBit' , component : BuyBitCoinsComponent},
   {path :'sellBit' , component : SellBitCoinsComponent},
-  {path :'homepageTrader' , component : HomepageTraderComponent}
+  {path :'homepageTrader' , component : HomepageTraderComponent},
+  {path : 'managerHomePage', component : ManagerModuleComponent}
 ];
 
 @NgModule({

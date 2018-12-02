@@ -115,10 +115,44 @@ export class LandingPageComponent implements OnInit {
         console.log("fail");
       }
     }
+    else if(this.loginType.length > 0 && this.loginType == "manager")
+    {
+      if( this.userName.length > 0 && this.password.length > 0)
+      {
+        this.errorShow = false;
+        this.errorFromResponse = false;
+        console.log("valid parameters trader");
+        let obs = this.http.get('http://localhost:8080/restproject/webapi/products/loginManager/'+this.userName+"/"+this.password);
+        obs.subscribe((data:any) =>
+        {
+          console.log("login response : "+data.errorMessage);
+
+          if(data.result == true)
+          {
+            //login --> change module
+
+            this.router.navigate(['/managerHomePage']);
+          }
+          else
+          {
+            this.errorFromResponse = true;
+            this.errorStringFromResponse = data.errorMessage;
+          }
+
+        });
+
+      }
+      else
+      {
+        this.errorShow = true;
+        this.errorFromResponse = false;
+        console.log("fail");
+      }
+    }
     else
     {
       this.errorFromResponse = true;
-      this.errorStringFromResponse = "Select client or trader ";
+      this.errorStringFromResponse = "Select client or trader or manager ";
     }
   }
 }

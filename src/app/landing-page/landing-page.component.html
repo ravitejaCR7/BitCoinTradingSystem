@@ -6,6 +6,7 @@
   <p>Select the type</p>
   <input type="radio" value="client" name="ClientType" (change) = radioLoginType($event)> Client
   <input type="radio" value="trader" name="ClientType" (change) = radioLoginType($event)> Trader
+  <input type="radio" value="manager" name="ClientType" (change) = radioLoginType($event)> Manager
   <br/><br/>
 
   <button (click) = "validateLogin()">Login</button>

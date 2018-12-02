@@ -1,0 +1,20 @@
+<div>
+
+  <input type="radio" value="dates" name="ClientType" (change) = radioDatesSelection($event)> Dates
+  <input type="radio" value="weeks" name="ClientType" (change) = radioDatesSelection($event)> Weekly
+  <input type="radio" value="months" name="ClientType" (change) = radioDatesSelection($event)> Monthly
+
+  <div *ngIf="showDates">
+  Select From date:<input type="date" #myDate [value]="date | date:'yyyy-MM-dd'" (input)="date=parseFromDate($event.target.value)" />
+  Select From date:<input type="date" #myDate [value]="date | date:'yyyy-MM-dd'" (input)="date=parseToDate($event.target.value)" /><br/>
+  </div>
+  <button (click) = "getTheseDates()">Check</button>
+
+  <p *ngIf="errorFromResponse">{{errorStringFromResponse}}</p>
+
+  <div *ngIf="historyFlag">
+    <h2>BitCoins History</h2>
+    <app-client-history *ngFor="let transIds of transList" [transId]="transIds"></app-client-history>
+  </div>
+
+</div>

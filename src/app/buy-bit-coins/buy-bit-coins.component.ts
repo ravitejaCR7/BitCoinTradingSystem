@@ -192,6 +192,12 @@ export class BuyBitCoinsComponent implements OnInit {
             });
 
           }
+          else if(data.result == false)
+          {
+            this.errorMessageFromResponse = data.errorMessage;
+            this.errorFlag = true;
+          }
+
           } ,
           (err:any) => {
               console.log("err : "+err);
